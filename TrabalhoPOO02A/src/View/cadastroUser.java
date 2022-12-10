@@ -1,20 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
-
+import Controller.UsuarioCadastro;
+import Model.DAO.Banco;
+import javax.swing.JTextField;
+import Controller.Helpers.UsuarioCadastroHelper;
 /**
  *
  * @author mathe
  */
 public class cadastroUser extends javax.swing.JFrame {
 
-    /**
-     * Creates new form cadastroUser
-     */
+    private final UsuarioCadastro controller;
+    private final UsuarioCadastroHelper controller1;
+    
+    
     public cadastroUser() {
         initComponents();
+        this.controller = new UsuarioCadastro(this);
+        this.controller1 = new UsuarioCadastroHelper(this);
     }
 
     /**
@@ -31,12 +33,14 @@ public class cadastroUser extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        lblTipo = new javax.swing.JTextField();
-        lblNome = new javax.swing.JTextField();
-        lblEnd = new javax.swing.JTextField();
-        lblDataCad = new javax.swing.JTextField();
-        lblCpf = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        TextTipo = new javax.swing.JTextField();
+        TextId = new javax.swing.JTextField();
+        nomeText = new javax.swing.JTextField();
+        TextDataCad = new javax.swing.JTextField();
+        TextCPF = new javax.swing.JTextField();
+        btnCadUser = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        TextEnder = new javax.swing.JTextField();
         PlanoDeFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -46,69 +50,79 @@ public class cadastroUser extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Uni Neue Heavy", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 204));
         jLabel2.setText("Tipo de Usuário:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 590, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Uni Neue Heavy", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 204));
-        jLabel3.setText("Nome Completo:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, -1, -1));
+        jLabel3.setText("ID:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Uni Neue Heavy", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 204));
         jLabel4.setText("Data Cadastro:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 680, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 700, -1, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Uni Neue Heavy", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 204));
         jLabel5.setText("CPF:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 520, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Uni Neue Heavy", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 204));
         jLabel6.setText("Endereço:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, -1, -1));
 
-        lblTipo.setBackground(new java.awt.Color(255, 255, 255));
-        lblTipo.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 590, 900, 40));
+        TextTipo.setBackground(new java.awt.Color(255, 255, 255));
+        TextTipo.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(TextTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 610, 900, 40));
 
-        lblNome.setBackground(new java.awt.Color(255, 255, 255));
-        lblNome.setForeground(new java.awt.Color(0, 0, 0));
-        lblNome.addActionListener(new java.awt.event.ActionListener() {
+        TextId.setBackground(new java.awt.Color(255, 255, 255));
+        TextId.setForeground(new java.awt.Color(0, 0, 0));
+        TextId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblNomeActionPerformed(evt);
+                TextIdActionPerformed(evt);
             }
         });
-        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 900, 40));
+        getContentPane().add(TextId, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 80, 40));
 
-        lblEnd.setBackground(new java.awt.Color(255, 255, 255));
-        lblEnd.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(lblEnd, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 900, 40));
+        nomeText.setBackground(new java.awt.Color(255, 255, 255));
+        nomeText.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(nomeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 900, 40));
 
-        lblDataCad.setBackground(new java.awt.Color(255, 255, 255));
-        lblDataCad.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(lblDataCad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 680, 900, 40));
+        TextDataCad.setBackground(new java.awt.Color(255, 255, 255));
+        TextDataCad.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(TextDataCad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 700, 900, 40));
 
-        lblCpf.setBackground(new java.awt.Color(255, 255, 255));
-        lblCpf.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(lblCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 900, 40));
+        TextCPF.setBackground(new java.awt.Color(255, 255, 255));
+        TextCPF.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(TextCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, 900, 40));
 
-        jButton1.setBackground(new java.awt.Color(0, 51, 255));
-        jButton1.setFont(new java.awt.Font("Uni Neue Heavy", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ENVIAR");
-        jButton1.setBorderPainted(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCadUser.setBackground(new java.awt.Color(0, 51, 255));
+        btnCadUser.setFont(new java.awt.Font("Uni Neue Heavy", 0, 14)); // NOI18N
+        btnCadUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadUser.setText("ENVIAR");
+        btnCadUser.setBorderPainted(false);
+        btnCadUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCadUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCadUserActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 790, 160, 50));
+        getContentPane().add(btnCadUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 790, 160, 50));
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Uni Neue Heavy", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel7.setText("Nome Completo:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
+
+        TextEnder.setBackground(new java.awt.Color(255, 255, 255));
+        TextEnder.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(TextEnder, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 900, 40));
 
         PlanoDeFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/cadastroUser.png"))); // NOI18N
         getContentPane().add(PlanoDeFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1378, 916));
@@ -117,13 +131,13 @@ public class cadastroUser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadUserActionPerformed
+            this.controller.cadastrarUsuario();
+    }//GEN-LAST:event_btnCadUserActionPerformed
 
-    private void lblNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblNomeActionPerformed
+    private void TextIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblNomeActionPerformed
+    }//GEN-LAST:event_TextIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,17 +176,19 @@ public class cadastroUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel PlanoDeFundo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField TextCPF;
+    private javax.swing.JTextField TextDataCad;
+    private javax.swing.JTextField TextEnder;
+    private javax.swing.JTextField TextId;
+    private javax.swing.JTextField TextTipo;
+    private javax.swing.JButton btnCadUser;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField lblCpf;
-    private javax.swing.JTextField lblDataCad;
-    private javax.swing.JTextField lblEnd;
-    private javax.swing.JTextField lblNome;
-    private javax.swing.JTextField lblTipo;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField nomeText;
     // End of variables declaration//GEN-END:variables
 
 

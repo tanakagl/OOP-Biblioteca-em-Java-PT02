@@ -1,11 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
-import Controller.BuscaUser;
-import javax.swing.JOptionPane;
+import Controller.MenuController;
+import Model.DAO.Banco;
+import Model.DAO.UsuarioDAO;
 
 /**
  *
@@ -13,13 +10,15 @@ import javax.swing.JOptionPane;
  */
 public class menu extends javax.swing.JFrame {
     
-    private final BuscaUser controller;
+    private final MenuController controller;
     /**
      * Creates new form menu
      */
     public menu() {
+        Banco.inicia();
         initComponents();
-        controller = new BuscaUser(this);
+        this.controller = new MenuController(this);
+       
     }
 
     /**
@@ -31,6 +30,7 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -229,13 +229,13 @@ public class menu extends javax.swing.JFrame {
         getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 820, 190, 70));
 
         planoDeFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/Prancheta 1.jpg"))); // NOI18N
-        getContentPane().add(planoDeFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 990));
+        getContentPane().add(planoDeFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 990));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    new UsuarioDAO().selectAll();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -243,15 +243,15 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new cadastroLivro().setVisible(true);
+    this.controller.navegarParaCadastroLivro();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.controller.buscarUsuario();
+    this.controller.navegarBuscarUser();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-      new cadastroUser().setVisible(true);
+     this.controller.navegarParaCadastroUser();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -263,7 +263,7 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+    this.controller.navegarParaComprarLivro();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -350,10 +350,9 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel planoDeFundo;
     // End of variables declaration//GEN-END:variables
 
-    public void exibirMensagem(String mensagem) {
-        JOptionPane.showMessageDialog(null, mensagem);
-    }
+
 }

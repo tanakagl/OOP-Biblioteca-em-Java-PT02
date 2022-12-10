@@ -1,7 +1,4 @@
-package trabalhopoo01;
-
-//import java.util.ArrayList;
-//import java.util.Scanner;
+package Model;
 
 public class Livros {
      //Declaracao dos atributos
@@ -33,6 +30,87 @@ public class Livros {
         this.exclusiv = exclusiv;
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public double getPriceVenda() {
+        return priceVenda;
+    }
+
+    public void setPriceVenda(double priceVenda) {
+        this.priceVenda = priceVenda;
+    }
+
+    public double getPriceAluguel() {
+        return priceAluguel;
+    }
+
+    public void setPriceAluguel(double priceAluguel) {
+        this.priceAluguel = priceAluguel;
+    }
+
+    public int getQuant() {
+        return quant;
+    }
+
+    public void setQuant(int quant) {
+        this.quant = quant;
+    }
+
+    public String getSelo() {
+        return selo;
+    }
+
+    public void setSelo(String selo) {
+        this.selo = selo;
+    }
+
+    public String getDataLivro() {
+        return dataLivro;
+    }
+
+    public void setDataLivro(String dataLivro) {
+        this.dataLivro = dataLivro;
+    }
+
+    public int getExclusiv() {
+        return exclusiv;
+    }
+
+    public void setExclusiv(int exclusiv) {
+        this.exclusiv = exclusiv;
+    }
+
+    
     
     
     @Override //toString para printar os dados dos livros conforme o pedido do usuario
